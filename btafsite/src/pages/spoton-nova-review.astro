@@ -9,6 +9,39 @@ import Layout from '../layouts/Layout.astro';
   lcpImage="https://betterthanafence.com/wp-content/uploads/2025/05/SpotOn-Collar-on-Box-Landscape-Crop.jpg"
 >
 
+  <!-- Product + Review structured data -->
+  <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "SpotOn Nova GPS Dog Fence",
+    "image": "https://betterthanafence.com/wp-content/uploads/2025/05/SpotOn-Collar-on-Box-Landscape-Crop.jpg",
+    "description": "GPS dog fence with under 5 ft accuracy, 99.3% containment rate, no subscription required. Works offline with 151 satellites.",
+    "brand": { "@type": "Brand", "name": "SpotOn" },
+    "review": {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "4.8",
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "Better Than A Fence"
+      },
+      "datePublished": "2025-05-01",
+      "reviewBody": "After 14 months of daily testing on a challenging 5-acre property, the SpotOn Nova delivers industry-leading GPS accuracy under 5 ft with 99.3% containment rate and no mandatory subscription."
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "999",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "url": "https://deals.betterthanafence.com/click"
+    }
+  }
+  </script>
+
   <!-- ====== HERO WITH QUICK VERDICT ====== -->
   <section class="cro-hero">
     <div class="container">

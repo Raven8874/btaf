@@ -21,6 +21,36 @@ const {
 } = Astro.props;
 
 const siteTitle = title === "Home" ? "Better Than A Fence | GPS Dog Fence Reviews & Comparisons" : `${title} | Better Than A Fence`;
+
+// Auto-generate canonical URL (override with canonical prop if provided)
+const canonicalUrl = canonical || new URL(Astro.url.pathname, Astro.site).href;
+
+// Sitewide Organization schema
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Better Than A Fence",
+  "url": "https://betterthanafence.com",
+  "logo": "https://betterthanafence.com/wp-content/uploads/2025/05/%E2%80%8EBetter-Than-A-Fence-Logo.png",
+  "description": "Honest GPS dog fence reviews and comparisons from a real dog owner who spent $5,200+ testing every system.",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "contact@betterthanafence.com",
+    "contactType": "customer service"
+  }
+};
+
+// Breadcrumb schema (non-homepage pages only)
+const pathSegments = Astro.url.pathname.split('/').filter(Boolean);
+const isHomepage = pathSegments.length === 0;
+const breadcrumbSchema = !isHomepage ? {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://betterthanafence.com/" },
+    { "@type": "ListItem", "position": 2, "name": title, "item": canonicalUrl }
+  ]
+} : null;
 ---
 
 <!doctype html>
@@ -43,14 +73,20 @@ const siteTitle = title === "Home" ? "Better Than A Fence | GPS Dog Fence Review
 
     <title>{siteTitle}</title>
     <meta name="description" content={description} />
-    {canonical && <link rel="canonical" href={canonical} />}
+    <link rel="canonical" href={canonicalUrl} />
     <meta property="og:title" content={siteTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={siteTitle} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Structured data: Organization (sitewide) -->
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+    {breadcrumbSchema && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />}
   </head>
   <body>
     <Header />
