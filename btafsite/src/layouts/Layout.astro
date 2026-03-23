@@ -69,7 +69,7 @@ const breadcrumbSchema = !isHomepage ? {
     <link rel="dns-prefetch" href="https://deals.betterthanafence.com" />
 
     <!-- LCP image preload -->
-    {lcpImage && <link rel="preload" as="image" href={lcpImage} />}
+    {lcpImage && <link rel="preload" as="image" href={lcpImage} fetchpriority="high" />}
 
     <title>{siteTitle}</title>
     <meta name="description" content={description} />
