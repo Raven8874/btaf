@@ -25,6 +25,9 @@ const siteTitle = title === "Home" ? "Better Than A Fence | GPS Dog Fence Review
 // Auto-generate canonical URL (override with canonical prop if provided)
 const canonicalUrl = canonical || new URL(Astro.url.pathname, Astro.site).href;
 
+// Auto-noindex varb (A/B test) pages
+const isVarb = Astro.url.pathname.includes('-varb');
+
 // Sitewide Organization schema
 const organizationSchema = {
   "@context": "https://schema.org",
@@ -73,6 +76,7 @@ const breadcrumbSchema = !isHomepage ? {
 
     <title>{siteTitle}</title>
     <meta name="description" content={description} />
+    {isVarb && <meta name="robots" content="noindex, nofollow" />}
     <link rel="canonical" href={canonicalUrl} />
     <meta property="og:title" content={siteTitle} />
     <meta property="og:description" content={description} />
