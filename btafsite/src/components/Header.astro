@@ -1,0 +1,163 @@
+---
+const currentPath = Astro.url.pathname;
+---
+
+<header class="header">
+  <div class="header-inner container">
+    <a href="/" class="logo">
+      <img
+        src="https://betterthanafence.com/wp-content/uploads/2025/05/%E2%80%8EBetter-Than-A-Fence-Logo.png"
+        alt="Better Than A Fence"
+        width="180"
+        height="40"
+      />
+    </a>
+    <nav class="nav">
+      <a href="/" class:list={["nav-link", { active: currentPath === "/" }]}>Home</a>
+      <a href="/spoton-vs-halo" class:list={["nav-link", { active: currentPath.includes("spoton-vs-halo") }]}>Reviews</a>
+      <a href="/about" class:list={["nav-link", { active: currentPath === "/about" || currentPath === "/about/" }]}>About</a>
+      <a href="/spoton-gps-dog-fence-discount-save-80-today" class="btn btn-primary btn-nav">Get $80 Off SpotOn</a>
+    </nav>
+    <button class="mobile-toggle" aria-label="Toggle menu" id="mobile-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile nav overlay -->
+<div class="mobile-nav" id="mobile-nav">
+  <a href="/" class="mobile-nav-link">Home</a>
+  <a href="/spoton-vs-halo" class="mobile-nav-link">Reviews</a>
+  <a href="/about" class="mobile-nav-link">About</a>
+  <a href="/spoton-gps-dog-fence-discount-save-80-today" class="btn btn-primary" style="width:100%;margin-top:8px;">Get $80 Off SpotOn</a>
+</div>
+
+<script>
+  const toggle = document.getElementById('mobile-toggle');
+  const mobileNav = document.getElementById('mobile-nav');
+  toggle?.addEventListener('click', () => {
+    toggle.classList.toggle('open');
+    mobileNav?.classList.toggle('open');
+  });
+</script>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--gray-100);
+    height: var(--header-height);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .logo img {
+    height: 36px;
+    width: auto;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .nav-link {
+    color: var(--gray-600);
+    font-weight: 500;
+    font-size: 0.9375rem;
+    transition: color var(--transition-fast);
+    text-decoration: none;
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    color: var(--gray-900);
+  }
+
+  .btn-nav {
+    padding: 10px 24px;
+    font-size: 0.875rem;
+  }
+
+  .mobile-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .mobile-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--gray-700);
+    border-radius: 2px;
+    transition: all var(--transition-base);
+  }
+
+  .mobile-toggle.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .mobile-toggle.open span:nth-child(2) {
+    opacity: 0;
+  }
+  .mobile-toggle.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .mobile-nav {
+    display: none;
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    background: var(--white);
+    padding: 24px;
+    border-bottom: 1px solid var(--gray-200);
+    box-shadow: var(--shadow-lg);
+    z-index: 99;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .mobile-nav.open {
+    display: flex;
+  }
+
+  .mobile-nav-link {
+    display: block;
+    padding: 12px 16px;
+    color: var(--gray-700);
+    font-weight: 500;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+  }
+
+  .mobile-nav-link:hover {
+    background: var(--off-white);
+    color: var(--gray-900);
+  }
+
+  @media (max-width: 768px) {
+    .nav {
+      display: none;
+    }
+    .mobile-toggle {
+      display: flex;
+    }
+  }
+</style>

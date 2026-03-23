@@ -1,0 +1,111 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+}
+
+const {
+  title,
+  description = "Honest GPS dog fence reviews and comparisons. Find the best GPS dog fence for your property with our in-depth, hands-on testing.",
+  canonical,
+  ogImage = "https://betterthanafence.com/wp-content/uploads/2025/05/SpotOn-Collar-on-Box-Landscape-Crop.jpg",
+} = Astro.props;
+
+const siteTitle = title === "Home" ? "Better Than A Fence | GPS Dog Fence Reviews & Comparisons" : `${title} | Better Than A Fence`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="https://betterthanafence.com/wp-content/uploads/2025/05/%E2%80%8EBetter-Than-A-Fence-Logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <title>{siteTitle}</title>
+    <meta name="description" content={description} />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <meta property="og:title" content={siteTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={siteTitle} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- Microsoft Clarity -->
+    <script is:inline type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window,document,"clarity","script","qf0mlll7rc");
+    </script>
+
+    <!-- Meta Pixel -->
+    <script is:inline>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window,document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1917597695457820');
+      fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1917597695457820&ev=PageView&noscript=1" /></noscript>
+
+    <!-- Google Analytics (GA4) -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-14204522982"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-14204522982');
+    </script>
+
+    <!-- Redtrack -->
+    <script is:inline src="https://deals.betterthanafence.com/unilpclick.js?attribution=lastpaid&cookiedomain=&cookieduration=90&defaultcampaignid=&regviewonce=false"></script>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+
+    <!-- CTA Click Tracking — GA4 + Meta Pixel -->
+    <script is:inline>
+      document.addEventListener('click', function(e) {
+        var el = e.target.closest('[data-cta-label]');
+        if (!el) return;
+        var label = el.getAttribute('data-cta-label');
+        var brand = el.getAttribute('data-cta-brand') || 'unknown';
+        var page = document.location.pathname.replace(/^\/|\/$/g, '') || 'home';
+        if (typeof gtag === 'function') {
+          gtag('event', 'cta_click', {
+            cta_label: label,
+            cta_brand: brand,
+            cta_page: page
+          });
+        }
+        if (typeof fbq === 'function') {
+          fbq('trackCustom', 'CTAClick', {
+            cta_label: label,
+            cta_brand: brand,
+            cta_page: page
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

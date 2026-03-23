@@ -1,0 +1,147 @@
+---
+import Layout from './Layout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  publishDate: string;
+  heroImage?: string;
+}
+
+const { title, description, publishDate, heroImage } = Astro.props;
+
+const formattedDate = new Date(publishDate).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<Layout title={title} description={description} ogImage={heroImage}>
+  <article class="article-layout">
+    <header class="article-header container">
+      <h1 class="article-title">{title}</h1>
+      <time class="article-date" datetime={publishDate}>{formattedDate}</time>
+      {heroImage && (
+        <img
+          src={heroImage}
+          alt={title}
+          class="article-hero"
+          loading="eager"
+        />
+      )}
+    </header>
+
+    <div class="prose container">
+      <slot />
+    </div>
+
+    <aside class="article-cta container">
+      <div class="article-cta-box">
+        <a
+          href="https://deals.betterthanafence.com/click"
+          class="btn btn-primary btn-lg"
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+          data-cta-label="article-sidebar-cta"
+          data-cta-brand="spoton"
+        >
+          Get $80 Off SpotOn Nova
+        </a>
+        <a href="/spoton-vs-halo" class="article-cta-secondary">
+          Read Our Full Comparison
+        </a>
+        <p class="article-disclaimer">
+          This article may contain affiliate links. If you make a purchase through these links, we may earn a small commission at no extra cost to you. This helps support our independent testing and reviews.
+        </p>
+      </div>
+    </aside>
+  </article>
+</Layout>
+
+<style>
+  .article-layout {
+    background: var(--white);
+  }
+
+  .article-header {
+    max-width: var(--content-width);
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+    text-align: center;
+  }
+
+  .article-title {
+    font-size: 2.75rem;
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--gray-900);
+    margin-bottom: 0.75rem;
+  }
+
+  .article-date {
+    display: block;
+    font-size: 0.9375rem;
+    color: var(--gray-500);
+    margin-bottom: 2rem;
+  }
+
+  .article-hero {
+    width: 100%;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+    margin-top: 0.5rem;
+  }
+
+  .article-cta {
+    max-width: var(--content-width);
+    padding-top: 3rem;
+    padding-bottom: 4rem;
+  }
+
+  .article-cta-box {
+    text-align: center;
+    border-top: 2px solid var(--gray-100);
+    padding-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .article-cta-secondary {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--orange-600);
+    transition: color var(--transition-fast);
+  }
+
+  .article-cta-secondary:hover {
+    color: var(--orange-700);
+    text-decoration: underline;
+  }
+
+  .article-disclaimer {
+    font-size: 0.8125rem;
+    color: var(--gray-500);
+    line-height: 1.6;
+    max-width: 540px;
+    margin-top: 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .article-header {
+      padding-top: 2rem;
+      padding-bottom: 1.5rem;
+    }
+
+    .article-title {
+      font-size: 2rem;
+    }
+
+    .article-cta {
+      padding-top: 2rem;
+      padding-bottom: 3rem;
+    }
+  }
+</style>

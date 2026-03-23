@@ -1,0 +1,101 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img
+          src="https://betterthanafence.com/wp-content/uploads/2025/05/%E2%80%8EBetter-Than-A-Fence-Logo.png"
+          alt="Better Than A Fence"
+          width="160"
+          height="36"
+          class="footer-logo"
+        />
+        <p class="footer-tagline">Honest GPS dog fence reviews from a real dog owner who's tested them all.</p>
+      </div>
+      <div class="footer-links">
+        <a href="/about">About</a>
+        <a href="/privacy-policy">Privacy Policy</a>
+        <a href="mailto:contact@betterthanafence.com">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; {year} Better Than a Fence. All rights reserved.</p>
+      <p class="footer-disclaimer">This site contains affiliate links. We may earn a commission from qualifying purchases at no additional cost to you.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--gray-900);
+    color: var(--gray-400);
+    padding: 48px 0 32px;
+    margin-top: 80px;
+  }
+
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--gray-700);
+  }
+
+  .footer-logo {
+    height: 32px;
+    width: auto;
+    opacity: 0.9;
+    margin-bottom: 12px;
+  }
+
+  .footer-tagline {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    max-width: 320px;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 28px;
+  }
+
+  .footer-links a {
+    color: var(--gray-400);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: color var(--transition-fast);
+    text-decoration: none;
+  }
+
+  .footer-links a:hover {
+    color: var(--white);
+  }
+
+  .footer-bottom {
+    padding-top: 24px;
+    font-size: 0.8125rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .footer-disclaimer {
+    font-size: 0.75rem;
+    color: var(--gray-500);
+  }
+
+  @media (max-width: 768px) {
+    .footer-inner {
+      flex-direction: column;
+      gap: 24px;
+    }
+    .footer-links {
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+</style>
