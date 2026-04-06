@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="SpotOn Nova GPS Fence Discount - Save $80 Today" description="Exclusive $80 discount on SpotOn Nova GPS Fence. Verified deal, applies automatically at checkout. 90-day money-back guarantee." ogImage="https://betterthanafence.com/wp-content/uploads/2025/05/SpotOn-Collar-on-Box-Landscape-Crop.jpg">
+<Layout title="SpotOn Nova GPS Fence Discount - Save $80 Today" description="Exclusive $80 discount on SpotOn Nova GPS Fence. Verified deal, applies automatically at checkout. 90-day money-back guarantee." ogImage="/images/SpotOn-Collar-on-Box-Landscape-Crop.jpg">
 
   <!-- HERO -->
   <section class="discount-hero">
@@ -312,6 +312,10 @@ import Layout from '../layouts/Layout.astro';
     .discount-hero { padding: 48px 0; }
     .discount-hero h1 { font-size: 2rem; }
   }
+  @media (max-width: 480px) {
+    .discount-hero h1 { font-size: 1.625rem; }
+    .discount-hero-sub { font-size: 1rem; }
+  }
 
   /* PRICE CARDS */
   .price-section { padding: 0 0 64px; margin-top: -20px; }
@@ -464,6 +468,10 @@ import Layout from '../layouts/Layout.astro';
     .how-grid { grid-template-columns: 1fr 1fr; }
     .how-stats { gap: 32px; flex-wrap: wrap; }
   }
+  @media (max-width: 480px) {
+    .how-grid { grid-template-columns: 1fr; }
+    .how-stats { gap: 20px; flex-direction: column; align-items: center; }
+  }
 
   /* REVIEWS */
   .reviews-grid {
@@ -498,6 +506,9 @@ import Layout from '../layouts/Layout.astro';
   @media (max-width: 768px) {
     .reviews-grid { grid-template-columns: 1fr; }
     .reviews-stats { gap: 32px; }
+  }
+  @media (max-width: 480px) {
+    .reviews-stats { gap: 16px; flex-direction: column; align-items: center; }
   }
 
   /* FAQ */

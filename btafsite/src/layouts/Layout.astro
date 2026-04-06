@@ -16,7 +16,7 @@ const {
   title,
   description = "Honest GPS dog fence reviews and comparisons. Find the best GPS dog fence for your property with our in-depth, hands-on testing.",
   canonical,
-  ogImage = "https://betterthanafence.com/wp-content/uploads/2025/05/SpotOn-Collar-on-Box-Landscape-Crop.jpg",
+  ogImage = "/images/SpotOn-Collar-on-Box-Landscape-Crop.jpg",
   lcpImage,
 } = Astro.props;
 
@@ -25,8 +25,8 @@ const siteTitle = title === "Home" ? "Better Than A Fence | GPS Dog Fence Review
 // Auto-generate canonical URL (override with canonical prop if provided)
 const canonicalUrl = canonical || new URL(Astro.url.pathname, Astro.site).href;
 
-// Auto-noindex varb (A/B test) pages
-const isVarb = Astro.url.pathname.includes('-varb');
+// Auto-noindex A/B test variant pages (-varb, -varc, etc.)
+const isVarb = /-var[a-z]/.test(Astro.url.pathname);
 
 // Sitewide Organization schema
 const organizationSchema = {
@@ -34,7 +34,7 @@ const organizationSchema = {
   "@type": "Organization",
   "name": "Better Than A Fence",
   "url": "https://betterthanafence.com",
-  "logo": "https://betterthanafence.com/wp-content/uploads/2025/05/%E2%80%8EBetter-Than-A-Fence-Logo.png",
+  "logo": "/images/Better-Than-A-Fence-Logo.png",
   "description": "Honest GPS dog fence reviews and comparisons from a real dog owner who spent $5,200+ testing every system.",
   "contactPoint": {
     "@type": "ContactPoint",
@@ -61,7 +61,7 @@ const breadcrumbSchema = !isHomepage ? {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="https://betterthanafence.com/wp-content/uploads/2025/05/%E2%80%8EBetter-Than-A-Fence-Logo.png" />
+    <link rel="icon" type="image/png" href="/images/Better-Than-A-Fence-Logo.png" />
 
     <!-- Fonts: self-hosted via @fontsource-variable/inter (no external requests) -->
 

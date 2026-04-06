@@ -189,6 +189,16 @@ h4 { font-size: 1.25rem; }
   }
 }
 
+@media (max-width: 480px) {
+  .btn-lg {
+    padding: 14px 24px;
+    font-size: 1rem;
+  }
+  .container {
+    padding: 0 16px;
+  }
+}
+
 .text-center { text-align: center; }
 .text-sm { font-size: 0.875rem; }
 .text-xs { font-size: 0.75rem; }

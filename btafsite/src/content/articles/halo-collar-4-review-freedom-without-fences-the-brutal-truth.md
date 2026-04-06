@@ -2,7 +2,7 @@
 title: "Halo Collar 5 Review: Freedom Without Fences? The Brutal Truth (2026)"
 description: "11 months of testing the Halo Collar 5 with two dogs across three properties. The uncensored truth about GPS accuracy, subscriptions, and real-world performance."
 publishDate: "2025-05-19"
-heroImage: "https://betterthanafence.com/wp-content/uploads/2025/05/Halo-Collar-With-Box-Landscape-Crop.jpeg"
+heroImage: "/images/Halo-Collar-With-Box-Landscape-Crop.jpeg"
 ---
 
 **Last Updated: May 19, 2025**
